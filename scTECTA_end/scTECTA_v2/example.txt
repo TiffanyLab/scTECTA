@@ -1,4 +1,1 @@
-python train.py --use_pca False --n_epochs 2000 --dense_dim 50 --hidden_dim 256 --weight 0.1 --target_pnum 2 --source_pnum 0 --source_disease T020088_7_2 --target_disease T020088_7_2 --dropout_ratio 0.1 --k 0.01
-python train.py --use_pca False --n_epochs 2000 --dense_dim 50 --hidden_dim 256 --weight 0.1 --target_pnum 2 --source_disease T020098_3_2 --target_disease T020098_3_2 --dropout_ratio 0.1 --k 0.01 --selected_gene hvg
-
-python train.py --use_pca False --n_epochs 2000 --dense_dim 50 --hidden_dim 256 --weight 0.1 --target_pnum 2 --source_disease T010001_1 --target_disease T010001_1 --dropout_ratio 0.1 --k 0.01 --selected_gene KEGG_Human_Disease
+python train.py --use_pca False --n_epochs 2000 --dense_dim 50 --hidden_dim 256 --weight 0.1 --target_pnum 2 --source_disease train --target_disease test --dropout_ratio 0.1 --k 0.01

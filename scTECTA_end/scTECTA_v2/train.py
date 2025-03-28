@@ -182,8 +182,6 @@ if __name__ == '__main__':
                         help='trade-off parameter')
     parser.add_argument('--patience', type=int, default=15,
                         help='patience for early stopping')
-    parser.add_argument('--selected_gene', type=str, default="hvg",
-                        help='hvg or Reactome_Human_Organismal_Systems')
 
     params = parser.parse_args()
     args = parser.parse_args()

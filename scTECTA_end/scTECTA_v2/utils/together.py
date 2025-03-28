@@ -87,35 +87,6 @@ def load_expression_data(data_path, label2id):
     return matrices, all_labels, num_cells, adatas
 
 
-def select_pathway_gene(pathway_name):
-    gene_set = set()
-
-    parts = pathway_name.split('_')
-    field_name = '_'.join(parts[2:])
-    database_name = parts[0]
-
-    with open(f'../Pathway/split pathway/{database_name} Pathway Split Package/{database_name}_Human_{field_name}.txt', 'r') as file:
-        for line in file:
-            columns = line.strip().split('\t')
-            genes = columns[2:]
-            gene_set.update(genes)
-
-    return gene_set
-
-
-def select_gene(adata, params):
-    if params.selected_gene == 'hvg':
-        sc.pp.highly_variable_genes(adata, flavor='seurat', n_top_genes=2000)
-        adata = adata[:, adata.var.highly_variable]
-    else:
-        gene_set = select_pathway_gene(params.selected_gene)
-        adata.var_names = adata.var_names.str.lower()
-        genes_all = adata.var_names
-        genes_keep = genes_all[genes_all.isin(gene_set)]
-        adata = adata[:, genes_keep]
-
-    return adata
-
 
 def csv_load_data_together(self,params):
     dense_dim = params.dense_dim
@@ -155,13 +126,15 @@ def csv_load_data_together(self,params):
         target_disease_data_path,label2id)
 
     for adata in adatas_source:
-        adata = select_gene(adata, params)
+        sc.pp.highly_variable_genes(adata, flavor='seurat', n_top_genes=2000)
+        adata = adata[:, adata.var.highly_variable]
         adata = adata.copy()
         sc.pp.normalize_total(adata, exclude_highly_expressed=True, target_sum=10000)
         sc.pp.log1p(adata)
 
     for adata in adatas_target:
-        adata = select_gene(adata, params)
+        sc.pp.highly_variable_genes(adata, flavor='seurat', n_top_genes=2000)
+        adata = adata[:, adata.var.highly_variable]
         adata = adata.copy()
         sc.pp.normalize_total(adata, exclude_highly_expressed=True, target_sum=10000)
 
