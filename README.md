@@ -1,6 +1,6 @@
 # scTECTA: Asymmetric Deep Transfer Learning for Cross-Patient Tumor Microenvironment Single-Cell Annotation
 
-<img src="./figure_scTECTA.png" width="900">
+<img src="https://github.com/TiffanyLab/scTECTA/blob/main/Figure_scTECTA.png" width="900">
 
 scTECTA is a deep transfer learning model designed to transfer single-cell annotation information from an annotated patient dataset to an unannotated patient dataset, adapted for the tumor microenvironment. This project is a sample implementation based on `torch`.
 
