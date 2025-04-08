@@ -1,0 +1,1 @@
+python train.py --use_pca False --n_epochs 2000 --dense_dim 50 --hidden_dim 256 --weight 0.1 --target_pnum 2 --source_disease train --target_disease test --dropout_ratio 0.1 --k 0.01
